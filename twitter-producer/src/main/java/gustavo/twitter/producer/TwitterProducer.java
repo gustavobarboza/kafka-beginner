@@ -76,7 +76,7 @@ public class TwitterProducer {
         properties.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, 5);
 
         // batching config
-        properties.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, CompressionType.SNAPPY);
+        properties.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, CompressionType.SNAPPY.name);
         properties.put(ProducerConfig.BATCH_SIZE_CONFIG, Integer.toString(32*1024));
         properties.put(ProducerConfig.LINGER_MS_CONFIG, "20");
 
