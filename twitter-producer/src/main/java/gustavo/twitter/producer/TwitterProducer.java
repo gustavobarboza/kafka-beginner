@@ -20,9 +20,7 @@ import java.util.Set;
 
 public class TwitterProducer {
 
-    public static final String TWITTER_BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAB2gfAEAAAAA4FbtChFFpEgt5nm5ylGfp28qnyE%3DDd3c3BFqEVFdJGEuLFn1qOizfvzTBBfSmPvWZOixcYlIo6g6Fz";
     private static final String BOOTSTRAP_SERVERS = "localhost:9092";
-
     private static final Logger logger = LoggerFactory.getLogger(TwitterProducer.class);
 
     public static void main(String... args) throws ApiException {
@@ -30,7 +28,8 @@ public class TwitterProducer {
     }
 
     public void run() throws ApiException {
-        TwitterApi apiInstance = new TwitterApi(new TwitterCredentialsBearer(TWITTER_BEARER_TOKEN));
+        TwitterApi apiInstance = new TwitterApi(new TwitterCredentialsBearer(System.getenv().get("TWITTER_BEARER_TOKEN")));
+
         List<Tweet> tweets = getTweets(apiInstance);
         processTweets(tweets);
     }
